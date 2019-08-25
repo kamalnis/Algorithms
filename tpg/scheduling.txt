@@ -1,0 +1,27 @@
+//Input: List the graphs, counter set of each cv, M mixers
+//Output: Scheduling list for each target conc. value
+
+topological_sort(t)
+     if(counter.find(t))
+        if(!stored(t))
+          store the conc. value and decrement the counter
+        else
+           decrement the counter
+
+      else
+         flush the storage
+     for(i: child list of t)
+         if(!used(i))
+             topological_sort(i)
+
+     sc.push_back(t)
+
+Scheduling()
+
+  foreach(t: Mixing graph)
+    Perform topological_sort(t) and store the conc. value which is present in the counter set
+    sc.reverse(t.begin(),t.end())
+    Insert the scheduling List in a vector
+
+  while(scheduling list is not empty)
+    Schedule the target cv in a batch of M mixers and remove the scheduling from the scheduling list  

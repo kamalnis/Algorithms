@@ -1,0 +1,78 @@
+Tree Generation
+
+Input: Target Concentration values
+Output: Mixing Trees
+1. For each target concentration values:
+     create node parent
+     current=parent
+    /* t=k=(int)10*cv
+     cv=p=10*cv-(int)10*cv
+     create node child with cv 1 and volume k then add it to the child list of the current
+
+     if k==9
+        create a child 'ch' with conc. value 'cv' and  volume 1 and then add it to the child list of the current.
+        current = ch
+
+     else
+        k=cv-(10*cv - (int)10*cv)/10
+        create a child 'ch' with conc. value 'k' and volume 1 and then add it to the child list of the current.
+        k=(int)10*cv
+        cv=p=(10*cv-(int)10*cv)/10
+        create a child 'ch' with conc. value 'cv' and volume 1 and then add it to the child list of the current.
+        current = ch
+        if(t+2<10)
+           create a child 'ch' with conc. value '0' and volume 10-t-2 then add it to the child list of the current.
+
+    */
+
+     while(cv!=0.0)
+       t=k=((int)100*cv)/10;
+       cv=p=10*cv-(int)10*cv;
+
+       if(k>=1)
+           create a node child 'ch' with cv 1 and volume k then add it in the child list of node current.
+           if(k==9)
+               create a child 'ch' with conc. value 'cv' and  volume 1 and then add it to the child list of the current.
+               current = ch
+
+           else
+               k=cv-(10*cv - (int)10*cv)/10
+               create a child 'ch' with conc. value 'k' and volume 1 and then add it to the child list of the current.
+               k=(int)10*cv
+               cv=p=(10*cv-(int)10*cv)/10
+               create a child 'ch' with conc. value 'cv' and volume 1 and then add it to the child list of the current.
+               current = ch
+               if(t+2<10)
+                   create a child 'ch' with conc. value '0' and volume 10-t-2 then add it to the child list of the current.
+
+
+       else
+           create a node child 'ch' with conc. value 'k' and volume 1 and then add it to the child list of the current.
+           cv=p=(10*cv-(int)10*cv)/10
+           create a child 'ch' with conc. value 'cv' and volume 1 and then add it to the child list of the current.
+           current = ch
+           if(t+2<10)
+               create a child 'ch' with conc. value '0' and volume 10-t-2 then add it to the child list of the current.
+
+      insert parent node to the list of mixing trees.
+
+
+
+
+      \begin{algorithm}
+      %\SetKwInOut{Input}{input}
+      %\SetKwInOut{Output}{output}
+      \caption{Tree Generation}
+      %\Input{N target concentration values}
+      %\Output{N dilution graph}
+      \textbf{Input:} N target concentration values\\
+      \textbf{Output:} N dilution graph\\
+      \begin{algorithmic}[1]
+
+      \STATE \lForEach{target concentration values}{
+          \STATE     create node parent
+          \STATE     current=parent
+       }
+      \end{algorithmic}
+      \end{algorithm}
+      
